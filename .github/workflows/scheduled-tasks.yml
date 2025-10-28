@@ -1,0 +1,21 @@
+name: Scheduled Tasks
+
+on:
+  schedule:
+    # Runs every day at midnight UTC
+    - cron: "0 0 * * *"
+  workflow_dispatch:  # allows manual run from the Actions tab
+
+jobs:
+  run-scheduled-task:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run maintenance task
+        run: |
+          echo "🕐 Running scheduled maintenance task..."
+          date
+          echo "✅ Maintenance completed successfully!"
